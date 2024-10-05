@@ -1,0 +1,50 @@
+<p>JSX (JavaScript XML) allows use of XML-like syntax in JavaScript.</p>
+
+<p>For example:</p>
+
+<pre data-language="javascript">
+let name = &quot;Foo&quot;;
+&lt;&gt;
+	&lt;div&gt;
+		&lt;p&gt;Hello, {name}&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/&gt;
+</pre>
+
+<p>JSX syntax is supported through TypeScript. Make sure to install TypeScript as described in the TypeScript page.</p>
+
+<p>Install <code>@xylem-js/jsx</code> package:</p>
+
+<pre data-language="plain">
+npm install @xylem-js/jsx --save-dev
+</pre>
+
+<p>Update <code>tsconfig.json</code> file:</p>
+
+<pre data-language="javascript">
+{
+	&quot;compilerOptions&quot;: {
+		&quot;jsx&quot;: &quot;react-jsxdev&quot;,
+		&quot;jsxImportSource&quot;: &quot;@xylem-js/jsx&quot;
+	}
+}
+</pre>
+
+<p>A complete <code>tsconfig.json</code> may look like this:</p>
+
+<pre data-language="javascript">
+{
+	&quot;compilerOptions&quot;: {
+		&quot;target&quot;: &quot;ESNext&quot;,
+		&quot;jsx&quot;: &quot;react-jsxdev&quot;,
+		&quot;jsxImportSource&quot;: &quot;@xylem-js/jsx&quot;
+		&quot;module&quot;: &quot;Preserve&quot;,
+		&quot;sourceMap&quot;: true,
+		&quot;forceConsistentCasingInFileNames&quot;: true,
+		&quot;strict&quot;: true,
+		&quot;skipLibCheck&quot;: true
+	}
+}
+</pre>
+
+<p>Check the &quot;Hello World example&quot; page for usage of JSX.</p>

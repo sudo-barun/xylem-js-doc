@@ -1,0 +1,52 @@
+<p>(Note: make sure <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm" rel="noopener noreferrer" target="_blank">npm is installed</a>.)</p>
+
+<ul><li>Go to the project directory</li></ul>
+
+<pre data-language="plain">
+cd /path/to/project/
+</pre>
+
+<ul><li>Install <code>@xylem-js/xylem-js</code> package:</li></ul>
+
+<pre data-language="plain">
+npm install @xylem-js/xylem-js
+</pre>
+
+<ul><li>(Optional) To use JSX syntax, install <code>@xylem-js/jsx</code> package:</li></ul>
+
+<pre data-language="plain">
+npm install @xylem-js/jsx
+</pre>
+
+<p></p>
+
+<p>To check installation:</p>
+
+<ul><li>Create <code>index.html</code> with following content:</li></ul>
+
+<pre data-language="xml">
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;script type=&quot;module&quot;&gt;
+import createStore from &#39;./node_modules/@xylem-js/xylem-js/core/createStore.js&#39;;
+
+const name$ = createStore(&#39;Foo&#39;);
+console.log(`Hello ${name$._()}`);
+name$.subscribe(v =&gt; console.log(`Hello ${name$._()}`));
+name$._(&#39;Bar&#39;);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<ul><li>Start a web server and open the <code>index.html</code> file in web browser. Open dev-tools (F12), choose &quot;Console&quot; tab and check for the messages from <code>console.log</code> in the &quot;Console&quot; tab in dev-tools. You should be able to see the following text in console:</li></ul>
+
+<pre data-language="plain">
+Hello Foo
+Hello Bar
+</pre>
+
+<p></p>
+
+<p></p>

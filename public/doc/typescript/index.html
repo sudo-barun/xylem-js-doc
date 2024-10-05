@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xylem-JS Documentation</title>
+<meta name="description" content="Xylem-JS Documentation">
+<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/node_modules/@highlightjs/cdn-assets/styles/default.min.css">
+
+<style>
+
+:root {
+	tab-size: 4;
+}
+
+pre {
+	border: 2px solid #888;
+	padding: 8px;
+}
+
+article > h2:not(:first-child) {
+	margin-top: 2.5rem;
+}
+
+article > h3 {
+	margin-top: 2rem;
+}
+
+.top-container {
+	min-height: 100dvh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+@media (min-width: 992px) {
+	.top-container {
+		grid-template-rows: auto 1fr auto;
+	}
+}
+
+.sidenav {
+	max-height: 100vh;
+	overflow: auto;
+}
+
+@media (min-width: 992px) {
+	.sidenav {
+		position: sticky;
+		top: 0;
+	}
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="top-container">
+
+	<div>
+		<div>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container">
+			<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a href="/" class="nav-link">
+							Home
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/doc/installation/" class="nav-link">
+							Docs
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>
+	</div>
+
+	<div>
+		<div class="container" style="margin-block: 24px;">
+
+			<div class="row">
+
+				<nav class="col-12 col-md-3 py-3 align-self-start sidenav">
+					<nav>
+	<div>
+		Getting Started
+	</div>
+	<ul class="nav flex-column">
+		<li class="nav-item">
+			<a href="/doc/installation/" class="nav-link">
+				Installation
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/doc/typescript/" class="nav-link">
+				TypeScript
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/doc/jsx/" class="nav-link">
+				JSX
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/doc/hello-world/" class="nav-link">
+				Hello World example
+			</a>
+		</li>
+	</ul>
+</nav>
+				</nav>
+
+				<article class="col-12 col-md-9 py-3">
+
+					<h1>TypeScript</h1>
+
+					<p>XylemJS has built-in support for <a href="https://www.typescriptlang.org" rel="noopener noreferrer" target="_blank">TypeScript</a>.</p>
+
+<p>To use typescript, install Typescript:</p>
+
+<pre data-language="plain">
+npm install typescript --save-dev
+</pre>
+
+<p>After installation, generate <code>tsconfig.json</code> file:</p>
+
+<pre data-language="plain">
+npx tsc --init
+</pre>
+
+<p>It is recommended to update the generated <code>tsconfig.json</code> file with the following configuration:</p>
+
+<pre data-language="javascript">
+{
+	&quot;compilerOptions&quot;: {
+		&quot;target&quot;: &quot;ESNext&quot;,
+		&quot;module&quot;: &quot;Preserve&quot;,
+		&quot;sourceMap&quot;: true
+	}
+}
+</pre>
+
+<p>A complete <code>tsconfig.json</code> may look like this:</p>
+
+<pre data-language="javascript">
+{
+	&quot;compilerOptions&quot;: {
+		&quot;target&quot;: &quot;ESNext&quot;,
+		&quot;module&quot;: &quot;Preserve&quot;,
+		&quot;sourceMap&quot;: true,
+		&quot;forceConsistentCasingInFileNames&quot;: true,
+		&quot;strict&quot;: true,
+		&quot;skipLibCheck&quot;: true
+	}
+}
+</pre>
+
+<p></p>
+
+				</article>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div>
+		<footer class="py-2 py-md-3 mt-5 bg-body-tertiary">
+	<div class="container py-2 py-md-3 px-4 px-md-3 text-body-secondary">
+		<div class="row">
+			<div class="col-lg-3 mb-3">
+				<a href="/">Xylem-JS</a>
+			</div>
+			<div class="col-6 col-lg-2 offset-lg-1 mb-3">
+				<a href="https://github.com/sudo-barun/xylem-js" target="_blank">GitHub</a>
+			</div>
+			<div class="col-6 col-lg-2 mb-3">
+				<a href="https://www.npmjs.com/package/@xylem-js/xylem-js" target="_blank">NPM</a>
+			</div>
+		</div>
+	</div>
+	<div class="container text-body-secondary">
+		<svg aria-label="Warning:" style="width: 1em; height: 1em;">
+			<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" fill="currentColor"></path>
+		</svg>
+		<small>
+			This project is currently in initial development phase. Public API MAY change at any time.
+		</small>
+	</div>
+</footer>
+	</div>
+
+</div>
+
+<script src="/node_modules/@highlightjs/cdn-assets/highlight.min.js"></script>
+
+<script src="/node_modules/@highlightjs/cdn-assets/languages/xml.min.js"></script>
+<script src="/node_modules/@highlightjs/cdn-assets/languages/css.min.js"></script>
+<script src="/node_modules/@highlightjs/cdn-assets/languages/javascript.min.js"></script>
+
+<script src="/modules/app.js" type="module"></script>
+
+</body>
+</html>
