@@ -1,1 +1,1 @@
-This repo contains for XylemJS.
+This repo contains documentation for XylemJS.
