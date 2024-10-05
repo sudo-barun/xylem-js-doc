@@ -1,0 +1,42 @@
+<p>XylemJS has built-in support for <a href="https://www.typescriptlang.org" rel="noopener noreferrer" target="_blank">TypeScript</a>.</p>
+
+<p>To use typescript, install Typescript:</p>
+
+<pre data-language="plain">
+npm install typescript --save-dev
+</pre>
+
+<p>After installation, generate <code>tsconfig.json</code> file:</p>
+
+<pre data-language="plain">
+npx tsc --init
+</pre>
+
+<p>It is recommended to update the generated <code>tsconfig.json</code> file with the following configuration:</p>
+
+<pre data-language="javascript">
+{
+	&quot;compilerOptions&quot;: {
+		&quot;target&quot;: &quot;ESNext&quot;,
+		&quot;module&quot;: &quot;Preserve&quot;,
+		&quot;sourceMap&quot;: true
+	}
+}
+</pre>
+
+<p>A complete <code>tsconfig.json</code> may look like this:</p>
+
+<pre data-language="javascript">
+{
+	&quot;compilerOptions&quot;: {
+		&quot;target&quot;: &quot;ESNext&quot;,
+		&quot;module&quot;: &quot;Preserve&quot;,
+		&quot;sourceMap&quot;: true,
+		&quot;forceConsistentCasingInFileNames&quot;: true,
+		&quot;strict&quot;: true,
+		&quot;skipLibCheck&quot;: true
+	}
+}
+</pre>
+
+<p></p>

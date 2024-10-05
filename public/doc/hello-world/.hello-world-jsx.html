@@ -1,0 +1,46 @@
+<h2>Using JSX</h2>
+
+<p>Here is the JSX version of hello world example. (Read the &quot;JSX&quot; page for JSX configuration)</p>
+
+<p><code>hello-world-jsx.html</code> :</p>
+
+<pre data-language="xml">
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;div id=&quot;app-container&quot;&gt;&lt;/div&gt;
+
+&lt;script type=&quot;importmap&quot;&gt;
+{
+	&quot;imports&quot;: {
+		&quot;@xylem-js/jsx/jsx-dev-runtime&quot;: &quot;./node_modules/@xylem-js/jsx/jsx-dev-runtime.js&quot;
+	}
+}
+&lt;/script&gt;
+&lt;script src=&quot;hello-world-jsx.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p><code>hello-world-jsx.tsx</code> :</p>
+
+<pre data-language="javascript">
+import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
+
+class HelloWorld extends Component
+{
+	build()
+	{
+		return &lt;&gt;
+			&lt;div&gt;
+				Hello, World!
+			&lt;/div&gt;
+		&lt;/&gt;;
+	}
+}
+
+mountComponent(new HelloWorld(), document.getElementById(&#39;app-container&#39;)!);
+</pre>
