@@ -18,9 +18,9 @@ include __DIR__ . '/../../../bootstrap.php';
 
 <h2>Live Example</h2>
 <div class="my-2">
-	<a href="<?= base_url('code/hello-world/hello-world.html') ?>" target="_blank">Open in new tab</a>
+	<a href="<?= base_path('code/hello-world/hello-world.html') ?>" target="_blank">Open in new tab</a>
 </div>
-<iframe src="<?= base_url('code/hello-world/hello-world.html') ?>" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
+<iframe src="<?= base_path('code/hello-world/hello-world.html') ?>" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
 
 <?php
 		include __DIR__ . '/.hello-world-jsx.html';
@@ -28,9 +28,9 @@ include __DIR__ . '/../../../bootstrap.php';
 
 <h2>Live Example (JSX)</h2>
 <div class="my-2">
-	<a href="<?= base_url('code/hello-world/hello-world-jsx.html') ?>" target="_blank">Open in new tab</a>
+	<a href="<?= base_path('code/hello-world/hello-world-jsx.html') ?>" target="_blank">Open in new tab</a>
 </div>
-<iframe src="<?= base_url('code/hello-world/hello-world-jsx.html') ?>" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
+<iframe src="<?= base_path('code/hello-world/hello-world-jsx.html') ?>" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
 
 <?php
 	}
