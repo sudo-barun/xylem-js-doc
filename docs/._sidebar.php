@@ -19,7 +19,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a href="<?= attr(base_path('/doc/hello-world/')) ?>" class="nav-link">
+			<a href="<?= attr(base_path('/doc/hello-world-example/')) ?>" class="nav-link">
 				Hello World example
 			</a>
 		</li>
