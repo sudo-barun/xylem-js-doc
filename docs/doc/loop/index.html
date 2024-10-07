@@ -156,108 +156,175 @@ article > h3 {
 
 				<article class="col-12 col-md-9 py-3">
 
-					<h1>Hello World example</h1>
+					<h1>Loop</h1>
 
-					<p>Here is a basic hello world example. You can copy the content and run locally.</p>
+					<p>Use <code>forEach</code> function to handle loop:</p>
 
-<p><code>hello-world.html</code> :</p>
-
-<pre data-language="xml">
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;body&gt;
-
-&lt;div id=&quot;app-container&quot;&gt;&lt;/div&gt;
-
-&lt;script src=&quot;hello-world.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-
-<p><code>hello-world.js</code> :</p>
+<p><code>loop.js</code> :</p>
 
 <pre data-language="javascript">
 import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import createStore from &#39;./node_modules/@xylem-js/xylem-js/core/createStore.js&#39;;
+import forEach from &#39;./node_modules/@xylem-js/xylem-js/dom/forEach.js&#39;;
 import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
 import parseHTML from &#39;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&#39;;
 
-class HelloWorld extends Component
+class Loop extends Component
 {
 	build()
 	{
+		const colors$ = createStore([&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]);
+
 		return parseHTML([
 			&#39;&lt;div&gt;&#39;,
 			[
-				&#39;Hello, World!&#39;,
+				&#39;Colors:&#39;,
+				forEach(colors$, (color, index$) =&gt; {
+					return parseHTML([
+						&#39;&lt;div&gt;&#39;,
+						[
+							index$._() + 1,
+							&#39;. &#39;,
+							color,
+						],
+						&#39;&lt;/div&gt;&#39;,
+					]);
+				}).endForEach(),
 			],
 			&#39;&lt;/div&gt;&#39;,
 		]);
 	}
 }
 
-mountComponent(new HelloWorld(), document.getElementById(&#39;app-container&#39;));
+mountComponent(new Loop(), document.getElementById(&#39;app-container&#39;));
 </pre>
 
-<h2>Live Example</h2>
-<div class="my-2">
-	<a href="/xylem-js-doc/docs/code/hello-world/hello-world.html" target="_blank">Open in new tab</a>
-</div>
-<iframe src="/xylem-js-doc/docs/code/hello-world/hello-world.html" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
+<p>JSX version of the code above:</p>
 
-<h2>Using JSX</h2>
-
-<p>Here is the JSX version of hello world example. (Read the &quot;JSX&quot; page for JSX configuration)</p>
-
-<p><code>hello-world-jsx.html</code> :</p>
-
-<pre data-language="xml">
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;body&gt;
-
-&lt;div id=&quot;app-container&quot;&gt;&lt;/div&gt;
-
-&lt;script type=&quot;importmap&quot;&gt;
-{
-	&quot;imports&quot;: {
-		&quot;@xylem-js/jsx/jsx-runtime&quot;: &quot;./node_modules/@xylem-js/jsx/jsx-runtime.js&quot;
-	}
-}
-&lt;/script&gt;
-&lt;script src=&quot;hello-world-jsx.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-
-<p><code>hello-world-jsx.tsx</code> :</p>
+<p><code>loop-jsx.tsx</code> :</p>
 
 <pre data-language="javascript">
 import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import createStore from &#39;./node_modules/@xylem-js/xylem-js/core/createStore.js&#39;;
+import forEach from &#39;./node_modules/@xylem-js/xylem-js/dom/forEach.js&#39;;
 import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
 
-class HelloWorld extends Component
+class Loop extends Component
 {
 	build()
 	{
+		const colors$ = createStore([&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]);
+
 		return &lt;&gt;
 			&lt;div&gt;
-				Hello, World!
+				Colors:
+				{ forEach(colors$, (color, index$) =&gt; {
+					return &lt;&gt;
+						&lt;div&gt;
+							{ index$._() + 1 }
+							{&#39;. &#39;}
+							{ color }
+						&lt;/div&gt;
+					&lt;/&gt;;
+				}).endForEach() }
 			&lt;/div&gt;
 		&lt;/&gt;;
 	}
 }
 
-mountComponent(new HelloWorld(), document.getElementById(&#39;app-container&#39;)!);
+mountComponent(new Loop(), document.getElementById(&#39;app-container&#39;)!);
 </pre>
 
-<h2>Live Example (JSX)</h2>
-<div class="my-2">
-	<a href="/xylem-js-doc/docs/code/hello-world/hello-world-jsx.html" target="_blank">Open in new tab</a>
-</div>
-<iframe src="/xylem-js-doc/docs/code/hello-world/hello-world-jsx.html" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
+<p><strong>Note</strong>: Remember to chain <code>forEach()</code> with <code>endForEach()</code> at the end.</p>
 
+<p></p>
+
+<p>Use <code>ArrayStore</code> to handle mutation:</p>
+
+<pre data-language="javascript">
+import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import createArrayStore from &#39;./node_modules/@xylem-js/xylem-js/array/createArrayStore.js&#39;;
+import forEach from &#39;./node_modules/@xylem-js/xylem-js/dom/forEach.js&#39;;
+import if_ from &#39;./node_modules/@xylem-js/xylem-js/dom/if_.js&#39;;
+import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
+import parseHTML from &#39;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&#39;;
+import push from &#39;./node_modules/@xylem-js/xylem-js/array_action/push.js&#39;;
+import unshift from &#39;./node_modules/@xylem-js/xylem-js/array_action/unshift.js&#39;;
+
+class LoopMutation extends Component
+{
+	build()
+	{
+		const colors$ = createArrayStore([&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]);
+
+		setTimeout(() =&gt; { colors$.mutate(push, &#39;cyan&#39;) }, 1500);
+		setTimeout(() =&gt; { colors$.mutate(unshift, &#39;magenta&#39;) }, 3000);
+		setTimeout(() =&gt; { colors$.mutate(remove, 2) }, 4500);
+
+		return parseHTML([
+			&#39;&lt;div&gt;&#39;,
+			[
+				forEach(colors$, (color, index$) =&gt; {
+					return parseHTML([
+						&#39;&lt;div&gt;&#39;,
+						[
+							map(index$, index =&gt; index + 1),
+							color,
+						],
+						&#39;&lt;/div&gt;&#39;,
+					]);
+				}).endForEach(),
+			],
+			&#39;&lt;/div&gt;&#39;,
+		]);
+	}
+}
+
+mountComponent(new LoopMutation(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+<p>JSX version of the code above:</p>
+
+<pre data-language="javascript">
+import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import createArrayStore from &#39;./node_modules/@xylem-js/xylem-js/array/createArrayStore.js&#39;;
+import forEach from &#39;./node_modules/@xylem-js/xylem-js/dom/forEach.js&#39;;
+import map from &#39;./node_modules/@xylem-js/xylem-js/core/map.js&#39;;
+import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
+import push from &#39;./node_modules/@xylem-js/xylem-js/array_action/push.js&#39;;
+import remove from &#39;./node_modules/@xylem-js/xylem-js/array_action/remove.js&#39;;
+import unshift from &#39;./node_modules/@xylem-js/xylem-js/array_action/unshift.js&#39;;
+
+class LoopMutation extends Component
+{
+	build()
+	{
+		const colors$ = createArrayStore([&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]);
+
+		setTimeout(() =&gt; { colors$.mutate(push, &#39;cyan&#39;) }, 1500);
+		setTimeout(() =&gt; { colors$.mutate(unshift, &#39;magenta&#39;) }, 3000);
+		setTimeout(() =&gt; { colors$.mutate(remove, 2) }, 4500);
+
+		return &lt;&gt;
+			&lt;div&gt;
+				{ forEach(colors$, (color, index$) =&gt; {
+					return &lt;&gt;
+						&lt;div&gt;
+							{ map(index$, index =&gt; index + 1) }
+							{&#39;. &#39;}
+							{ color }
+						&lt;/div&gt;
+					&lt;/&gt;;
+				}).endForEach() }
+			&lt;/div&gt;
+		&lt;/&gt;;
+	}
+}
+
+mountComponent(new LoopMutation(), document.getElementById(&#39;app-container&#39;)!);
+</pre>
+
+<p></p>
 
 				</article>
 

@@ -1,0 +1,187 @@
+<p>Use <code>if_</code> function to handle conditional rendering:</p>
+
+<p><code>conditional-if.js</code> :</p>
+
+<pre data-language="javascript">
+import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import createStore from &#39;./node_modules/@xylem-js/xylem-js/core/createStore.js&#39;;
+import if_ from &#39;./node_modules/@xylem-js/xylem-js/dom/if_.js&#39;;
+import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
+import parseHTML from &#39;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&#39;;
+
+class ConditionalIf extends Component
+{
+	build()
+	{
+		const showContent$ = createStore(true);
+
+		return parseHTML([
+			&#39;&lt;div&gt;&#39;,
+			[
+				&#39;&lt;button&gt;&#39;, {
+					type: &#39;button&#39;,
+					&#39;@click&#39;: () =&gt; showContent$._(!showContent$._()),
+				},
+				[
+					&#39;Toggle&#39;,
+				],
+				&#39;&lt;/button&gt;&#39;,
+			],
+			&#39;&lt;/div&gt;&#39;,
+			if_(showContent$, () =&gt; {
+				return parseHTML([
+					&#39;&lt;div&gt;&#39;,
+					[
+						&#39;The quick brown fox jumps over the lazy dog&#39;,
+					],
+					&#39;&lt;/div&gt;&#39;,
+				]);
+			}).endIf(),
+		]);
+	}
+}
+
+mountComponent(new ConditionalIf(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+<p>JSX version of the above code:</p>
+
+<p><code>conditional-if-jsx.tsx</code> :</p>
+
+<pre data-language="javascript">
+import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import createStore from &#39;./node_modules/@xylem-js/xylem-js/core/createStore.js&#39;;
+import if_ from &#39;./node_modules/@xylem-js/xylem-js/dom/if_.js&#39;;
+import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
+
+class ConditionalIf extends Component
+{
+	build()
+	{
+		const showContent$ = createStore(true);
+
+		return &lt;&gt;
+			&lt;div&gt;
+				{ if_(showContent$, () =&gt; {
+					return &lt;&gt;
+						&lt;div&gt;
+							Click to hide me → {}
+							&lt;button
+								type=&quot;button&quot;
+								on:click={() =&gt; showContent$._(false)}
+							&gt;
+								Hide
+							&lt;/button&gt;
+						&lt;/div&gt;
+					]);
+				}).endIf() }
+			&lt;/div&gt;
+		&lt;/&gt;;
+	}
+}
+
+mountComponent(new ConditionalExample(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+<p><strong>Note</strong>: Remember to chain <code>if_()</code> with <code>endif()</code> at the end.</p>
+
+<p>Use <code>else()</code> to show content when previous if is false:</p>
+
+<p><code>conditional-if-else.js</code> :</p>
+
+<pre data-language="javascript">
+import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import createStore from &#39;./node_modules/@xylem-js/xylem-js/core/createStore.js&#39;;
+import if_ from &#39;./node_modules/@xylem-js/xylem-js/dom/if_.js&#39;;
+import map from &#39;./node_modules/@xylem-js/xylem-js/core/map.js&#39;;
+import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
+import parseHTML from &#39;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&#39;;
+
+class ConditionalIfElse extends Component
+{
+	build()
+	{
+		const isArchived$ = createStore(false);
+
+		return parseHTML([
+			&#39;&lt;div&gt;&#39;,
+			[
+				&#39;To-do list:&#39;,
+				&#39;&lt;ol&gt;&#39;,
+				[
+					&#39;&lt;li&gt;&#39;,
+					[
+						if_(isArchived$, () =&gt; {
+							return parseHTML([
+								&#39;&lt;del&gt;&#39;, [&#39;Buy Vegetables&#39;], &#39;&lt;/del&gt;&#39;,
+							]);
+						}).else(() =&gt; {
+							return parseHTML([
+								&#39;Buy Vegetables&#39;,
+							]);
+						}).endIf(),
+						&#39; &#39;,
+						&#39;&lt;button&gt;&#39;, {
+							&#39;@click&#39;: () =&gt; isArchived$._(!isArchived$._()),
+						},
+						[ map(isArchived$, v =&gt; v ? &#39;Unarchive&#39; : &#39;Archive&#39;) ],
+						&#39;&lt;/button&gt;&#39;,
+					],
+					&#39;&lt;/li&gt;&#39;,
+				],
+				&#39;&lt;/ol&gt;&#39;,
+			],
+			&#39;&lt;/div&gt;&#39;,
+		]);
+	}
+}
+
+mountComponent(new ConditionalIfElse(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+<p>JSX version of the above code:</p>
+
+<p><code>conditional-if-else-jsx.tsx</code> :</p>
+
+<pre data-language="javascript">
+import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
+import createStore from &#39;./node_modules/@xylem-js/xylem-js/core/createStore.js&#39;;
+import if_ from &#39;./node_modules/@xylem-js/xylem-js/dom/if_.js&#39;;
+import map from &#39;./node_modules/@xylem-js/xylem-js/core/map.js&#39;;
+import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
+
+class ConditionalIfElse extends Component
+{
+	build()
+	{
+		const isArchived$ = createStore(false);
+
+		return &lt;&gt;
+			&lt;div&gt;
+				To-do list:
+				&lt;ol&gt;
+					&lt;li&gt;
+						{ if_(isArchived$, () =&gt; {
+							return &lt;&gt;
+								&lt;del&gt;Buy Vegetables&lt;/del&gt;
+							&lt;/&gt;;
+						}).else(() =&gt; {
+							return &lt;&gt;
+								Buy Vegetables
+							&lt;/&gt;;
+						}).endIf() }
+						{&#39; &#39;}
+						&lt;button
+							on:click={() =&gt; isArchived$._(!isArchived$._())}
+						&gt;
+							{ map(isArchived$, v =&gt; v ? &#39;Unarchive&#39; : &#39;Archive&#39;) }
+						&lt;/button&gt;
+					&lt;/li&gt;
+				&lt;/ol&gt;
+			&lt;/div&gt;
+		&lt;/&gt;;
+	}
+}
+
+mountComponent(new ConditionalIfElse(), document.getElementById(&#39;app-container&#39;)!);
+</pre>
