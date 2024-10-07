@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xylem-JS Documentation</title>
+<meta name="description" content="Xylem-JS Documentation">
+<link rel="stylesheet" href="/xylem-js-doc/docs/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/xylem-js-doc/docs/node_modules/@highlightjs/cdn-assets/styles/default.min.css">
+
+<style>
+
+:root {
+	tab-size: 4;
+}
+
+pre {
+	border: 2px solid #888;
+	padding: 8px;
+}
+
+article > h2:not(:first-child) {
+	margin-top: 2.5rem;
+}
+
+article > h3 {
+	margin-top: 2rem;
+}
+
+.top-container {
+	min-height: 100dvh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 992px) {
+	.top-container {
+		grid-template-rows: auto 1fr auto;
+	}
+}
+
+.sidenav {
+	max-height: 100vh;
+	overflow: auto;
+}
+
+@media (min-width: 992px) {
+	.sidenav {
+		position: sticky;
+		top: 0;
+	}
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="top-container">
+
+	<div>
+		<div>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container">
+			<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a href="/xylem-js-doc/docs/" class="nav-link">
+							Home
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/xylem-js-doc/docs/doc/installation/" class="nav-link">
+							Docs
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>
+	</div>
+
+	<div>
+		<div class="container" style="margin-block: 24px;">
+
+			<div class="row">
+
+				<nav class="col-12 col-md-3 py-3 align-self-start sidenav">
+					<nav>
+	<div>
+		Getting Started
+	</div>
+	<ul class="nav flex-column">
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/installation/" class="nav-link">
+				Installation
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/typescript/" class="nav-link">
+				TypeScript
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/jsx/" class="nav-link">
+				JSX
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/hello-world-example/" class="nav-link">
+				Hello World example
+			</a>
+		</li>
+	</ul>
+
+	<div>
+		Learn
+	</div>
+	<ul class="nav flex-column">
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/reactivity/" class="nav-link">
+				Reactivity
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/component/" class="nav-link">
+				Component
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/conditional/" class="nav-link">
+				Conditional
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/loop/" class="nav-link">
+				Loop
+			</a>
+		</li>
+		<li class="nav-item">
+			<a href="/xylem-js-doc/docs/doc/attribute/" class="nav-link">
+				Attribute
+			</a>
+		</li>
+	</ul>
+
+</nav>
+				</nav>
+
+				<article class="col-12 col-md-9 py-3">
+
+					<h1>Attribute</h1>
+
+					<p>Attribute can have value of various data types.</p>
+
+<ol><li>For static attribute, use value of <code>string</code>, <code>number</code> or <code>boolean</code>. <code>true</code> adds attribute with empty string while <code>false</code> will remove attribute.</li><li>For dynamic attribute, use value of <code>Supplier</code> type that contains string, number or boolean.</li></ol>
+
+<p><code>attribute.js</code> :</p>
+
+<pre data-language="javascript">
+import Component from &quot;./node_modules/@xylem-js/xylem-js/dom/Component.js&quot;;
+import createStore from &quot;./node_modules/@xylem-js/xylem-js/core/createStore.js&quot;;
+import mountComponent from &quot;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&quot;;
+import parseHTML from &quot;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&quot;;
+
+class Attribute extends Component
+{
+	build()
+	{
+		const style$ = createStore(&#39;background-color: palegoldenrod&#39;);
+
+		this.afterAttachToDom.subscribe(() =&gt; {
+			setTimeout(() =&gt; { style$._(&#39;background-color: palegreen&#39;) }, 1500);
+			setTimeout(() =&gt; { style$._(&#39;background-color: paleturquoise&#39;) }, 3000);
+		});
+
+		return parseHTML([
+			&#39;&lt;p&gt;&#39;, {
+				&#39;data-id&#39;: 1001,
+				hidden: false,
+				style: &#39;color: white; background-color: black; padding: 10px&#39;,
+			},
+			[
+				&#39;The quick brown fox jumps over the lazy dog&#39;
+			],
+			&#39;&lt;/p&gt;&#39;,
+			&#39;&lt;p&gt;&#39;, { hidden: true }, [ &#39;This is hidden&#39; ], &#39;&lt;/p&gt;&#39;,
+			&#39;&lt;p&gt;&#39;, {
+				style: style$,
+			},
+			[
+				&#39;The quick brown fox jumps over the lazy dog&#39;
+			],
+			&#39;&lt;/p&gt;&#39;,
+		]);
+	}
+}
+
+mountComponent(new Attribute(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+<p><code>attribute-jsx.tsx</code> :</p>
+
+<pre data-language="javascript">
+import Component from &quot;./node_modules/@xylem-js/xylem-js/dom/Component.js&quot;;
+import createStore from &quot;./node_modules/@xylem-js/xylem-js/core/createStore.js&quot;;
+import mountComponent from &quot;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&quot;;
+
+class Attribute extends Component
+{
+	build()
+	{
+		const style$ = createStore(&#39;background-color: palegoldenrod&#39;);
+
+		this.afterAttachToDom.subscribe(() =&gt; {
+			setTimeout(() =&gt; { style$._(&#39;background-color: palegreen&#39;) }, 1500);
+			setTimeout(() =&gt; { style$._(&#39;background-color: paleturquoise&#39;) }, 3000);
+		});
+
+		return &lt;&gt;
+			&lt;p
+				data-id={1001}
+				hidden={false}
+				style=&quot;color: white; background-color: black; padding: 10px&quot;
+			&gt;
+				The quick brown fox jumps over the lazy dog
+			&lt;/p&gt;
+			&lt;p hidden={true}&gt;This is hidden&lt;/p&gt;
+			&lt;p
+				style={style$}
+			&gt;
+				The quick brown fox jumps over the lazy dog
+			&lt;/p&gt;
+		&lt;/&gt;;
+	}
+}
+
+mountComponent(new Attribute(), document.getElementById(&#39;app-container&#39;)!);
+</pre>
+
+<p>Some attributes like <code>class</code> and <code>style</code> support additional data types as well.</p>
+
+<h2><code>class</code> attribute</h2>
+
+<p>In addition to data types mentioned above, class attribute also supports object and array values.</p>
+
+<h3>object</h3>
+
+<p>The key of object represents class while the value represents the presence or absence of the class. The value can be <code>boolean</code> or <code>Supplier&lt;boolean&gt;</code>.</p>
+
+<p>The final value of class attribute is the joined value of keys of object with a space character (<code> </code>) as separator.</p>
+
+<p><code>style.css</code> :</p>
+
+<pre data-language="css">
+.theme-dark {
+	background-color: #303030;
+	color: #e8e8e8;
+}
+
+.theme-light {
+	background-color: #f0f0f0;
+	color: #282828;
+}
+</pre>
+
+<p><code>class-attribute.js</code> :</p>
+
+<pre data-language="javascript">
+import Component from &quot;./node_modules/@xylem-js/xylem-js/dom/Component.js&quot;;
+import createStore from &quot;./node_modules/@xylem-js/xylem-js/core/createStore.js&quot;;
+import map from &quot;./node_modules/@xylem-js/xylem-js/core/map.js&quot;;
+import mountComponent from &quot;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&quot;;
+import parseHTML from &quot;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&quot;;
+
+class ClassAttribute extends Component
+{
+	build()
+	{
+		const isThemeDark$ = createStore(true);
+
+		return parseHTML([
+			&#39;&lt;p&gt;&#39;, {
+				class: {
+					&#39;theme-dark&#39;: isThemeDark$,
+					&#39;theme-light&#39;: map(isThemeDark$, v =&gt; !v),
+				},
+			},
+			[
+				map(isThemeDark$, v =&gt; v ? &#39;Dark Theme&#39; : &#39;Light Theme&#39;),
+			],
+			&#39;&lt;/p&gt;&#39;,
+			&#39;&lt;div&gt;&#39;,
+			[
+				&#39;&lt;button&gt;&#39;, {
+					&#39;@click&#39;: () =&gt; isThemeDark$._(!isThemeDark$._()),
+				},
+				[
+					&#39;Toggle Theme&#39;,
+				],
+				&#39;&lt;/button&gt;&#39;,
+			],
+			&#39;&lt;/div&gt;&#39;,
+		]);
+	}
+}
+
+mountComponent(new ClassAttribute(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+<h3>array</h3>
+
+<p>array can contain string or object.</p>
+
+<p>The final value of class attribute is the joined value of strings and keys of object with a space character as separator.</p>
+
+<p><code>class-attribute.js</code> :</p>
+
+<pre data-language="javascript">
+import Component from &quot;./node_modules/@xylem-js/xylem-js/dom/Component.js&quot;;
+import createStore from &quot;./node_modules/@xylem-js/xylem-js/core/createStore.js&quot;;
+import map from &quot;./node_modules/@xylem-js/xylem-js/core/map.js&quot;;
+import mountComponent from &quot;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&quot;;
+import parseHTML from &quot;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&quot;;
+
+class ClassAttribute extends Component
+{
+	build()
+	{
+		const isThemeDark$ = createStore(true);
+
+		return parseHTML([
+			&#39;&lt;p&gt;&#39;, {
+				class: [ &#39;font-monospace&#39;, {
+					&#39;theme-dark&#39;: isThemeDark$,
+					&#39;theme-light&#39;: map(isThemeDark$, v =&gt; !v),
+				}, &#39;mx-auto&#39; ],
+			},
+			[
+				map(isThemeDark$, v =&gt; v ? &#39;Dark Theme&#39; : &#39;Light Theme&#39;),
+			],
+			&#39;&lt;/p&gt;&#39;,
+			&#39;&lt;div&gt;&#39;,
+			[
+				&#39;&lt;button&gt;&#39;, {
+					&#39;@click&#39;: () =&gt; isThemeDark$._(!isThemeDark$._()),
+				},
+				[
+					&#39;Toggle Theme&#39;,
+				],
+				&#39;&lt;/button&gt;&#39;,
+			],
+			&#39;&lt;/div&gt;&#39;,
+		]);
+	}
+}
+
+mountComponent(new ClassAttribute(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+<h2><code>style</code> attribute</h2>
+
+<p>In addition to data types supported by all attributes, style attribute also supports object and array values.</p>
+
+<h3>object</h3>
+
+<p>The key of object represents CSS property while the value represents the value of CSS property or absence of the CSS property. The value can be <code>string</code>, <code>number</code>, <code>boolean</code> or <code>Supplier&lt;string|number|boolean&gt;</code>.</p>
+
+<p>The final value of class attribute is the joined value of keys of object with a semi-colon followed by a space character (<code>; </code>) as separator.</p>
+
+<pre data-language="javascript">
+import Component from &quot;./node_modules/@xylem-js/xylem-js/dom/Component.js&quot;;
+import createStore from &quot;./node_modules/@xylem-js/xylem-js/core/createStore.js&quot;;
+import map from &quot;./node_modules/@xylem-js/xylem-js/core/map.js&quot;;
+import mountComponent from &quot;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&quot;;
+import parseHTML from &quot;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&quot;;
+
+class StyleAttribute extends Component
+{
+	build()
+	{
+		const isThemeDark$ = createStore(true);
+
+		return parseHTML([
+			&#39;&lt;p&gt;&#39;, {
+				style: {
+					&#39;background-color&#39;: map(isThemeDark$, v =&gt; v ? &#39;#303030&#39; : &#39;#f0f0f0&#39;),
+					&#39;color&#39;: map(isThemeDark$, v =&gt; v ? &#39;#e8e8e8&#39; : &#39;#282828&#39;),
+				},
+			},
+			[
+				map(isThemeDark$, v =&gt; v ? &#39;Dark Theme&#39; : &#39;Light Theme&#39;),
+			],
+			&#39;&lt;/p&gt;&#39;,
+			&#39;&lt;div&gt;&#39;,
+			[
+				&#39;&lt;button&gt;&#39;, {
+					&#39;@click&#39;: () =&gt; isThemeDark$._(!isThemeDark$._()),
+				},
+				[
+					&#39;Toggle Theme&#39;,
+				],
+				&#39;&lt;/button&gt;&#39;,
+			],
+			&#39;&lt;/div&gt;&#39;,
+		]);
+	}
+}
+
+mountComponent(new StyleAttribute(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+<h3>array</h3>
+
+<p>array can contain string or object.</p>
+
+<p>The final value of class attribute is the joined value of strings and keys of object with a semi-colon followed by a space character (<code>; </code>) as separator.</p>
+
+<pre data-language="javascript">
+import Component from &quot;./node_modules/@xylem-js/xylem-js/dom/Component.js&quot;;
+import createStore from &quot;./node_modules/@xylem-js/xylem-js/core/createStore.js&quot;;
+import map from &quot;./node_modules/@xylem-js/xylem-js/core/map.js&quot;;
+import mountComponent from &quot;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&quot;;
+import parseHTML from &quot;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&quot;;
+
+class StyleAttribute extends Component
+{
+	build()
+	{
+		const isThemeDark$ = createStore(true);
+		const fontSizeEm$ = createStore(1);
+
+		return parseHTML([
+			&#39;&lt;p&gt;&#39;, {
+				style: [
+					&#39;display: block; padding: 24px&#39;,
+					{
+						&#39;background-color&#39;: map(isThemeDark$, v =&gt; v ? &#39;#303030&#39; : &#39;#f0f0f0&#39;),
+						&#39;color&#39;: map(isThemeDark$, v =&gt; v ? &#39;#e8e8e8&#39; : &#39;#282828&#39;),
+					},
+					&#39;font-family: system-ui, sans-serif&#39;,
+					{
+						&#39;font-size&#39;: map(fontSizeEm$, v =&gt; `${v}em`),
+					},
+					&#39;text-decoration: underline 2px&#39;
+				],
+			},
+			[
+				map(isThemeDark$, v =&gt; v ? &#39;Dark Theme&#39; : &#39;Light Theme&#39;),
+			],
+			&#39;&lt;/p&gt;&#39;,
+			&#39;&lt;div&gt;&#39;,
+			[
+				&#39;&lt;button&gt;&#39;, {
+					&#39;@click&#39;: () =&gt; isThemeDark$._(!isThemeDark$._()),
+				},
+				[ &#39;Toggle Theme&#39; ],
+				&#39;&lt;/button&gt;&#39;,
+			],
+			&#39;&lt;/div&gt;&#39;,
+			&#39;&lt;div&gt;&#39;,
+			[
+				&#39;Font size: &#39;,
+				&#39;&lt;button&gt;&#39;, {
+					&#39;@click&#39;: () =&gt; fontSizeEm$._(1),
+				},
+				[ &#39;1x&#39; ],
+				&#39;&lt;/button&gt;&#39;,
+				&#39;&lt;button&gt;&#39;, {
+					&#39;@click&#39;: () =&gt; fontSizeEm$._(1.5),
+				},
+				[ &#39;1.5x&#39; ],
+				&#39;&lt;/button&gt;&#39;,
+				&#39;&lt;button&gt;&#39;, {
+					&#39;@click&#39;: () =&gt; fontSizeEm$._(2),
+				},
+				[ &#39;2x&#39; ],
+				&#39;&lt;/button&gt;&#39;,
+			],
+			&#39;&lt;/div&gt;&#39;,
+		]);
+	}
+}
+
+mountComponent(new StyleAttribute(), document.getElementById(&#39;app-container&#39;));
+</pre>
+
+				</article>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div>
+		<footer class="py-2 py-md-3 mt-5 bg-body-tertiary">
+	<div class="container py-2 py-md-3 px-4 px-md-3 text-body-secondary">
+		<div class="row">
+			<div class="col-lg-3 mb-3">
+				<a href="/xylem-js-doc/docs/">Xylem-JS</a>
+			</div>
+			<div class="col-6 col-lg-2 offset-lg-1 mb-3">
+				<a href="https://github.com/sudo-barun/xylem-js" target="_blank">GitHub</a>
+			</div>
+			<div class="col-6 col-lg-2 mb-3">
+				<a href="https://www.npmjs.com/package/@xylem-js/xylem-js" target="_blank">NPM</a>
+			</div>
+		</div>
+	</div>
+	<div class="container text-body-secondary">
+		<svg aria-label="Warning:" style="width: 1em; height: 1em;">
+			<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" fill="currentColor"></path>
+		</svg>
+		<small>
+			This project is currently in initial development phase. Public API MAY change at any time.
+		</small>
+	</div>
+</footer>
+	</div>
+
+</div>
+
+<script src="/xylem-js-doc/docs/node_modules/@highlightjs/cdn-assets/highlight.min.js"></script>
+
+<script src="/xylem-js-doc/docs/node_modules/@highlightjs/cdn-assets/languages/xml.min.js"></script>
+<script src="/xylem-js-doc/docs/node_modules/@highlightjs/cdn-assets/languages/css.min.js"></script>
+<script src="/xylem-js-doc/docs/node_modules/@highlightjs/cdn-assets/languages/javascript.min.js"></script>
+
+<script src="/xylem-js-doc/docs/modules/app.js" type="module"></script>
+
+</body>
+</html>

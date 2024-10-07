@@ -3,17 +3,21 @@ import { CopyButton } from './CopyButton.js';
 
 document.addEventListener('DOMContentLoaded', (ev) => {
 
-	document.querySelectorAll('pre').forEach((el) => {
+	document.querySelectorAll('pre').forEach((preEl) => {
 
 		try {
-			const result = hljs.highlight(el.innerText, {language: el.getAttribute('data-language')});
-			el.innerHTML = result.value;
+			const result = hljs.highlight(preEl.innerText, {language: preEl.getAttribute('data-language')});
+			preEl.innerHTML = result.value;
 		} catch (error) {
 		}
 
-		el.style.position = 'relative';
-		el.style.overflow = 'visible';
-		mountComponent(new CopyButton({ textToCopy: el.innerText }), el);
+		const wrapperEl = document.createElement('div');
+		wrapperEl.style.position = 'relative';
+
+		preEl.replaceWith(wrapperEl);
+
+		wrapperEl.appendChild(preEl);
+		mountComponent(new CopyButton({ textToCopy: preEl.innerText }), wrapperEl);
 
 	});
 });
