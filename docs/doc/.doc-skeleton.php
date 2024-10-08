@@ -70,8 +70,22 @@ article > h3 {
 
 			<div class="row">
 
-				<nav class="col-12 col-md-3 py-3 align-self-start sidenav">
-					<?php include __DIR__ . '/../._sidebar.php' ?>
+				<nav class="col-12 col-md-3 py-lg-3 align-self-start sidenav">
+					<aside>
+						<div id="sidebar" class="offcanvas-lg offcanvas-start">
+							<div class="offcanvas-header border-bottom">
+								<h5 class="offcanvas-title">Docs</h5>
+								<button type="button"
+									class="btn-close"
+									data-bs-dismiss="offcanvas"
+									data-bs-target="#sidebar"
+								></button>
+							</div>
+							<div class="offcanvas-body">
+								<?php include __DIR__ . '/../._sidebar.php' ?>
+							</div>
+						</div>
+					</aside>
 				</nav>
 
 				<article class="col-12 col-md-9 py-3">
@@ -92,6 +106,8 @@ article > h3 {
 	</div>
 
 </div>
+
+<script src="<?= attr(base_path('node_modules/bootstrap/dist/js/bootstrap.js')) ?>"></script>
 
 <script src="<?= attr(base_path('node_modules/@highlightjs/cdn-assets/highlight.min.js')) ?>"></script>
 

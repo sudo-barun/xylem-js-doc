@@ -62,13 +62,48 @@ article > h3 {
 <div class="top-container">
 
 	<div>
+		<header class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
+	<nav class="container-xxl">
 		<div>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container">
-			<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-				<span class="navbar-toggler-icon"></span>
+			<button type="button"
+				class="navbar-toggler p-2"
+				data-bs-toggle="offcanvas"
+				data-bs-target="#sidebar"
+				style="border: none; box-shadow: none;"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		</div>
+		<a href="/xylem-js-doc/docs/"
+			class="navbar-brand"
+		>XylemJS</a>
+		<div class="d-flex">
+			<button type="button"
+				class="navbar-toggler d-flex d-lg-none p-2"
+				data-bs-toggle="offcanvas"
+				data-bs-target="#navbar"
+				style="border: none; box-shadow: none;"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"
+					class="bi bi-three-dots-vertical"
+				>
+					<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+				</svg>
+			</button>
+		</div>
+		<div id="navbar" class="offcanvas-lg offcanvas-end flex-grow-1">
+			<div class="offcanvas-header px-4 pb-0">
+				<h5 class="offcanvas-title">XylemJS</h5>
+				<button type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					data-bs-target="#navbar"
+				></button>
+			</div>
+			<div class="offcanvas-body p-4 pt-0 p-lg-0" ----class="collapse navbar-collapse" id="navbarSupportedContent">
+				<hr class="d-lg-none">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
 						<a href="/xylem-js-doc/docs/" class="nav-link">
@@ -84,7 +119,7 @@ article > h3 {
 			</div>
 		</div>
 	</nav>
-</div>
+</header>
 	</div>
 
 	<div>
@@ -92,8 +127,19 @@ article > h3 {
 
 			<div class="row">
 
-				<nav class="col-12 col-md-3 py-3 align-self-start sidenav">
-					<nav>
+				<nav class="col-12 col-md-3 py-lg-3 align-self-start sidenav">
+					<aside>
+						<div id="sidebar" class="offcanvas-lg offcanvas-start">
+							<div class="offcanvas-header border-bottom">
+								<h5 class="offcanvas-title">Docs</h5>
+								<button type="button"
+									class="btn-close"
+									data-bs-dismiss="offcanvas"
+									data-bs-target="#sidebar"
+								></button>
+							</div>
+							<div class="offcanvas-body">
+								<nav>
 	<div>
 		Getting Started
 	</div>
@@ -152,6 +198,9 @@ article > h3 {
 	</ul>
 
 </nav>
+							</div>
+						</div>
+					</aside>
 				</nav>
 
 				<article class="col-12 col-md-9 py-3">
@@ -293,6 +342,8 @@ mountComponent(new HelloWorld(), document.getElementById(&#39;app-container&#39;
 	</div>
 
 </div>
+
+<script src="/xylem-js-doc/docs/node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 <script src="/xylem-js-doc/docs/node_modules/@highlightjs/cdn-assets/highlight.min.js"></script>
 

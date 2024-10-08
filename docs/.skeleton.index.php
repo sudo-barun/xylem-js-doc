@@ -93,6 +93,8 @@ article > h3 {
 
 </div>
 
+<script src="<?= attr(base_path('node_modules/bootstrap/dist/js/bootstrap.js')) ?>"></script>
+
 <script src="<?= attr(base_path('node_modules/@highlightjs/cdn-assets/highlight.min.js')) ?>"></script>
 
 <script src="<?= attr(base_path('node_modules/@highlightjs/cdn-assets/languages/xml.min.js')) ?>"></script>
