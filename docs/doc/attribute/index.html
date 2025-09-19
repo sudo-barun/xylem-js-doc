@@ -203,11 +203,13 @@ article > h3 {
 					</aside>
 				</nav>
 
-				<article class="col-12 col-md-9 py-3">
+				<div class="col-12 col-md-9 py-3">
 
-					<h1>Attribute</h1>
+					<article>
 
-					<p>Attribute can have value of various data types.</p>
+						<h1>Attribute</h1>
+
+						<p>Attribute can have value of various data types.</p>
 
 <ol><li>For static attribute, use value of <code>string</code>, <code>number</code> or <code>boolean</code>. <code>true</code> adds attribute with empty string while <code>false</code> will remove attribute.</li><li>For dynamic attribute, use value of <code>Supplier</code> type that contains string, number or boolean.</li></ol>
 
@@ -541,7 +543,23 @@ class StyleAttribute extends Component
 mountComponent(new StyleAttribute(), document.getElementById(&#39;app-container&#39;));
 </pre>
 
-				</article>
+					</article>
+
+					<hr class="my-5">
+
+					<nav style="display: grid; grid-template-areas: 'previous next'; grid-template-columns: auto auto; justify-content: space-between">
+													<div style="grid-area: previous">
+								<div>
+									&laquo; Previous
+								</div>
+								<div>
+									<a href="/xylem-js-doc/docs/doc/loop/">
+										Loop									</a>
+								</div>
+							</div>
+																	</nav>
+
+				</div>
 
 			</div>
 

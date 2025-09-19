@@ -203,11 +203,13 @@ article > h3 {
 					</aside>
 				</nav>
 
-				<article class="col-12 col-md-9 py-3">
+				<div class="col-12 col-md-9 py-3">
 
-					<h1>Conditional</h1>
+					<article>
 
-					<p>Use <code>if_</code> function to handle conditional rendering:</p>
+						<h1>Conditional</h1>
+
+						<p>Use <code>if_</code> function to handle conditional rendering:</p>
 
 <p><code>conditional-if.js</code> :</p>
 
@@ -395,7 +397,32 @@ class ConditionalIfElse extends Component
 mountComponent(new ConditionalIfElse(), document.getElementById(&#39;app-container&#39;)!);
 </pre>
 
-				</article>
+					</article>
+
+					<hr class="my-5">
+
+					<nav style="display: grid; grid-template-areas: 'previous next'; grid-template-columns: auto auto; justify-content: space-between">
+													<div style="grid-area: previous">
+								<div>
+									&laquo; Previous
+								</div>
+								<div>
+									<a href="/xylem-js-doc/docs/doc/component/">
+										Component									</a>
+								</div>
+							</div>
+																			<div style="grid-area: next; text-align: right">
+								<div>
+									Next &raquo;
+								</div>
+								<div>
+									<a href="/xylem-js-doc/docs/doc/loop/">
+										Loop									</a>
+								</div>
+							</div>
+											</nav>
+
+				</div>
 
 			</div>
 
