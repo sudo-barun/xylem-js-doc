@@ -88,13 +88,46 @@ article > h3 {
 					</aside>
 				</nav>
 
-				<article class="col-12 col-md-9 py-3">
+				<div class="col-12 col-md-9 py-3">
 
-					<h1><?= $h1 ?? '' ?></h1>
+					<article>
 
-					<?= partial($content ?? '') ?>
+						<h1><?= $h1 ?? '' ?></h1>
 
-				</article>
+						<?= partial($content ?? '') ?>
+
+					</article>
+
+					<hr class="my-5">
+
+					<nav style="display: grid; grid-template-areas: 'previous next'; grid-template-columns: auto auto; justify-content: space-between">
+						<?php if (isset($previousPage)): ?>
+							<div style="grid-area: previous">
+								<div>
+									&laquo; Previous
+								</div>
+								<div>
+									<a href="<?= attr($previousPage['url']) ?>">
+										<?= attr($previousPage['text']) ?>
+									</a>
+								</div>
+							</div>
+						<?php endif ?>
+						<?php if (isset($nextPage)): ?>
+							<div style="grid-area: next; text-align: right">
+								<div>
+									Next &raquo;
+								</div>
+								<div>
+									<a href="<?= attr($nextPage['url']) ?>">
+										<?= attr($nextPage['text']) ?>
+									</a>
+								</div>
+							</div>
+						<?php endif ?>
+					</nav>
+
+				</div>
 
 			</div>
 
