@@ -8,6 +8,14 @@ include __DIR__ . '/../../../bootstrap.php';
 	{
 		$h1 = 'TypeScript';
 		$content = [$this,'content'];
+		$previousPage = [
+			'url' => base_path('/doc/installation/'),
+			'text' => 'Installation',
+		];
+		$nextPage = [
+			'url' => base_path('/doc/jsx/'),
+			'text' => 'JSX',
+		];
 		include __DIR__ . '/../.doc-skeleton.php';
 	}
 

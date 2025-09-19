@@ -8,6 +8,10 @@ include __DIR__ . '/../../../bootstrap.php';
 	{
 		$h1 = 'Attribute';
 		$content = [$this,'content'];
+		$previousPage = [
+			'url' => base_path('/doc/loop/'),
+			'text' => 'Loop',
+		];
 		include __DIR__ . '/../.doc-skeleton.php';
 	}
 
