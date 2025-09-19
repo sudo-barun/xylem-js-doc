@@ -203,11 +203,13 @@ article > h3 {
 					</aside>
 				</nav>
 
-				<article class="col-12 col-md-9 py-3">
+				<div class="col-12 col-md-9 py-3">
 
-					<h1>Hello World example</h1>
+					<article>
 
-					<p>Here is a basic hello world example. You can copy the content and run locally.</p>
+						<h1>Hello World example</h1>
+
+						<p>Here is a basic hello world example. You can copy the content and run locally.</p>
 
 <p><code>hello-world.html</code> :</p>
 
@@ -308,7 +310,32 @@ mountComponent(new HelloWorld(), document.getElementById(&#39;app-container&#39;
 <iframe src="/xylem-js-doc/docs/code/hello-world/hello-world-jsx.html" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
 
 
-				</article>
+					</article>
+
+					<hr class="my-5">
+
+					<nav style="display: grid; grid-template-areas: 'previous next'; grid-template-columns: auto auto; justify-content: space-between">
+													<div style="grid-area: previous">
+								<div>
+									&laquo; Previous
+								</div>
+								<div>
+									<a href="/xylem-js-doc/docs/doc/jsx/">
+										JSX									</a>
+								</div>
+							</div>
+																			<div style="grid-area: next; text-align: right">
+								<div>
+									Next &raquo;
+								</div>
+								<div>
+									<a href="/xylem-js-doc/docs/doc/reactivity/">
+										Reactivity									</a>
+								</div>
+							</div>
+											</nav>
+
+				</div>
 
 			</div>
 
