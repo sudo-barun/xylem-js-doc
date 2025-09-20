@@ -61,7 +61,7 @@ article > h3 {
 
 <div class="top-container">
 
-	<?php include __DIR__ . '/../._navbar.php' ?>
+	<?php $activeNavItem = 'docs'; include __DIR__ . '/../._navbar.php' ?>
 
 	<div>
 		<div class="container" style="margin-block: 24px;">

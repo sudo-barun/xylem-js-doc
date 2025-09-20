@@ -42,12 +42,12 @@
 				<hr class="d-lg-none">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a href="<?= attr(base_path('/')) ?>" class="nav-link">
+						<a href="<?= attr(base_path('/')) ?>" class="nav-link <?= $activeNavItem === 'home' ? 'active' : '' ?>">
 							Home
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= attr(base_path('/doc/installation/')) ?>" class="nav-link">
+						<a href="<?= attr(base_path('/doc/installation/')) ?>" class="nav-link <?= $activeNavItem === 'docs' ? 'active' : '' ?>">
 							Docs
 						</a>
 					</li>
