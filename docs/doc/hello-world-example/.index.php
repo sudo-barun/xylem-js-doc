@@ -16,6 +16,7 @@ include __DIR__ . '/../../../bootstrap.php';
 			'url' => base_path('/doc/reactivity/'),
 			'text' => 'Reactivity',
 		];
+		$pageDir =__DIR__;
 		include __DIR__ . '/../.doc-skeleton.php';
 	}
 

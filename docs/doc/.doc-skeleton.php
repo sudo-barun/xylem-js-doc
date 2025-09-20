@@ -54,6 +54,21 @@ article > h3 {
 	}
 }
 
+.sidenav .nav-link.active {
+	position: relative;
+}
+
+.sidenav .nav-link.active::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	height: calc(100% - 2 * var(--bs-nav-link-padding-y));
+	background-color: currentColor;
+	width: 2px;
+	top: var(--bs-nav-link-padding-y);
+}
+
+
 </style>
 
 </head>

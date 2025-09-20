@@ -2,7 +2,7 @@
 	<nav class="container-xxl">
 		<div>
 			<button type="button"
-				class="navbar-toggler p-2"
+				class="navbar-toggler p-2<?= page_path($pageDir) === '' ? ' invisible' : '' ?>"
 				data-bs-toggle="offcanvas"
 				data-bs-target="#sidebar"
 				style="border: none; box-shadow: none;"
