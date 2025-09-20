@@ -54,3 +54,12 @@ if (! function_exists('partial')) {
 		is_callable($name) ? $name() : $name;
 	}
 }
+
+if (! function_exists('page_path')) {
+	function page_path(string $pageDir) {
+		if (str_starts_with($pageDir.'/', PROJECT_DIR.'/docs/')) {
+			return substr($pageDir.'/', strlen(PROJECT_DIR.'/docs/'));
+		}
+		return $pageDir;
+	}
+}

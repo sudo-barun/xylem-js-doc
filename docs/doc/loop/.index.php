@@ -16,6 +16,7 @@ include __DIR__ . '/../../../bootstrap.php';
 			'url' => base_path('/doc/attribute/'),
 			'text' => 'Attribute',
 		];
+		$pageDir =__DIR__;
 		include __DIR__ . '/../.doc-skeleton.php';
 	}
 
