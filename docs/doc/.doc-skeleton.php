@@ -50,7 +50,7 @@ article > h3 {
 @media (min-width: 992px) {
 	.sidenav {
 		position: sticky;
-		top: 0;
+		top: 3.5rem;
 	}
 }
 
@@ -61,9 +61,7 @@ article > h3 {
 
 <div class="top-container">
 
-	<div>
-		<?php include __DIR__ . '/../._navbar.php' ?>
-	</div>
+	<?php include __DIR__ . '/../._navbar.php' ?>
 
 	<div>
 		<div class="container" style="margin-block: 24px;">

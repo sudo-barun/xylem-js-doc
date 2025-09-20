@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
+<header class="navbar navbar-expand-lg sticky-top bg-body-tertiary sticky-top">
 	<nav class="container-xxl">
 		<div>
 			<button type="button"
