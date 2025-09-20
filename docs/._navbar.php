@@ -47,7 +47,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= attr(base_path('/doc/installation/')) ?>" class="nav-link <?= $activeNavItem === 'docs' ? 'active' : '' ?>">
+						<a href="<?= attr(base_path('/doc/quick-start/')) ?>" class="nav-link <?= $activeNavItem === 'docs' ? 'active' : '' ?>">
 							Docs
 						</a>
 					</li>

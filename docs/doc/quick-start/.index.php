@@ -6,21 +6,17 @@ include __DIR__ . '/../../../bootstrap.php';
 {
 	public function __invoke()
 	{
-		$h1 = 'Installation';
+		$h1 = 'Quick Start';
 		$content = [$this,'content'];
-		$previousPage = [
-			'url' => base_path('/doc/quick-start/'),
-			'text' => 'Quick Start',
-		];
 		$nextPage = [
-			'url' => base_path('/doc/typescript/'),
-			'text' => 'Typescript',
+			'url' => base_path('/doc/installation/'),
+			'text' => 'Installation',
 		];
 		include __DIR__ . '/../.doc-skeleton.php';
 	}
 
 	public function content()
 	{
-		include __DIR__ . '/.installation.html';
+		include __DIR__ . '/.quick-start.html';
 	}
 })();

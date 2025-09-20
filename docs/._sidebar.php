@@ -4,6 +4,11 @@
 	</div>
 	<ul class="nav flex-column">
 		<li class="nav-item">
+			<a href="<?= attr(base_path('/doc/quick-start/')) ?>" class="nav-link">
+				Quick Start
+			</a>
+		</li>
+		<li class="nav-item">
 			<a href="<?= attr(base_path('/doc/installation/')) ?>" class="nav-link">
 				Installation
 			</a>
