@@ -8,6 +8,7 @@ include __DIR__ . '/../bootstrap.php';
 	{
 		$h1 = 'XylemJS';
 		$content = [$this,'content'];
+		$pageDir = __DIR__;
 		include __DIR__ . '/.skeleton.index.php';
 	}
 
