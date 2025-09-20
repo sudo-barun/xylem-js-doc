@@ -210,130 +210,86 @@ article > h3 {
 
 					<article>
 
-						<h1>Hello World example</h1>
+						<h1>Quick Start</h1>
 
-						<p>Here is a basic hello world example. You can copy the content and run locally.</p>
+						<h2>Setup XylemJS project</h2>
 
-<p><code>hello-world.html</code> :</p>
+<p>The following steps shows how to create new XylemJS project.</p>
 
-<pre data-language="xml">
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;body&gt;
+<p><strong>1. Download XylemJS project template</strong></p>
 
-&lt;div id=&quot;app-container&quot;&gt;&lt;/div&gt;
+<p>To download XylemJS project template, use following command:</p>
 
-&lt;script src=&quot;hello-world.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
+<pre data-language="plain">
+npx degit xylem-js/templates/js my-xylem-js-project
 </pre>
 
-<p><code>hello-world.js</code> :</p>
+<p>Alternatively, to use <strong>Typescript</strong> instead of Javascript, use following command:</p>
 
-<pre data-language="javascript">
-import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
-import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
-import parseHTML from &#39;./node_modules/@xylem-js/xylem-js/dom/parseHTML.js&#39;;
-
-class HelloWorld extends Component
-{
-	build()
-	{
-		return parseHTML([
-			&#39;&lt;div&gt;&#39;,
-			[
-				&#39;Hello, World!&#39;,
-			],
-			&#39;&lt;/div&gt;&#39;,
-		]);
-	}
-}
-
-mountComponent(new HelloWorld(), document.getElementById(&#39;app-container&#39;));
+<pre data-language="plain">
+npx degit xylem-js/templates/ts my-xylem-js-project
 </pre>
 
-<h2>Live Example</h2>
-<div class="my-2">
-	<a href="/xylem-js-doc/docs/code/hello-world/hello-world.html" target="_blank">Open in new tab</a>
-</div>
-<iframe src="/xylem-js-doc/docs/code/hello-world/hello-world.html" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
+<p>These commands use <a href="https://www.npmjs.com/package/degit" rel="noopener noreferrer" target="_blank">degit</a> to scaffold new XylemJS project from <a href="https://github.com/xylem-js/templates" rel="noopener noreferrer" target="_blank">https://github.com/xylem-js/templates</a> repository.</p>
 
-<h2>Using JSX</h2>
+<p><strong>2. Go to the project directory</strong></p>
 
-<p>Here is the JSX version of hello world example. (Read the &quot;JSX&quot; page for JSX configuration)</p>
-
-<p><code>hello-world-jsx.html</code> :</p>
-
-<pre data-language="xml">
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;body&gt;
-
-&lt;div id=&quot;app-container&quot;&gt;&lt;/div&gt;
-
-&lt;script type=&quot;importmap&quot;&gt;
-{
-	&quot;imports&quot;: {
-		&quot;@xylem-js/jsx/jsx-runtime&quot;: &quot;./node_modules/@xylem-js/jsx/jsx-runtime.js&quot;
-	}
-}
-&lt;/script&gt;
-&lt;script src=&quot;hello-world-jsx.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
+<pre data-language="plain">
+cd my-xylem-js-project
 </pre>
 
-<p><code>hello-world-jsx.tsx</code> :</p>
+<p><strong>3. Install npm dependencies</strong></p>
 
-<pre data-language="javascript">
-import Component from &#39;./node_modules/@xylem-js/xylem-js/dom/Component.js&#39;;
-import mountComponent from &#39;./node_modules/@xylem-js/xylem-js/dom/mountComponent.js&#39;;
-
-class HelloWorld extends Component
-{
-	build()
-	{
-		return &lt;&gt;
-			&lt;div&gt;
-				Hello, World!
-			&lt;/div&gt;
-		&lt;/&gt;;
-	}
-}
-
-mountComponent(new HelloWorld(), document.getElementById(&#39;app-container&#39;)!);
+<pre data-language="plain">
+npm install
 </pre>
 
-<h2>Live Example (JSX)</h2>
-<div class="my-2">
-	<a href="/xylem-js-doc/docs/code/hello-world/hello-world-jsx.html" target="_blank">Open in new tab</a>
-</div>
-<iframe src="/xylem-js-doc/docs/code/hello-world/hello-world-jsx.html" loading="lazy" style="border: 2px solid; width: 100%;"></iframe>
+<p><strong>4. Start dev server</strong></p>
 
+<pre data-language="plain">
+npm run dev
+</pre>
+
+<p>This starts a server at <a href="https://localhost:5173" rel="noopener noreferrer" target="_blank">https://localhost:5173</a> .</p>
+
+<p>⚠️ Notice: You may see warning in browser saying &quot;invalid certifcate&quot;. Since self-signed certificate is used to enable HTTPS, it is normal for browser to show such warning. You can safely continue by clicking &quot;Accept the Risk and Continue&quot; button.</p>
+
+<p>After you open the link, you will see &quot;Hello World&quot; text in the screen. You can edit the <code>src/App.tsx</code> file and the page reloads after saving any changes.</p>
+
+<p><strong>5. Build for production</strong></p>
+
+<pre data-language="plain">
+npm run build
+</pre>
+
+<p>This generates files inside <code>dist</code> folder.</p>
+
+<p>You can deploy the <code>dist</code> folder to host provider of your choice.</p>
+
+<p><strong>6. Preview production build</strong></p>
+
+<pre data-language="plain">
+npm run preview
+</pre>
+
+<p>This starts a server at <a href="https://localhost:4173" rel="noopener noreferrer" target="_blank">https://localhost:4173</a> .</p>
+
+<p></p>
+
+<p>If you want to add XylemJS to an already existing project or prefer installing packages manually, check the &quot;Installation&quot; page.</p>
 
 					</article>
 
 					<hr class="my-5">
 
 					<nav style="display: grid; grid-template-areas: 'previous next'; grid-template-columns: auto auto; justify-content: space-between">
-													<div style="grid-area: previous">
-								<div>
-									&laquo; Previous
-								</div>
-								<div>
-									<a href="/xylem-js-doc/docs/doc/jsx/">
-										JSX									</a>
-								</div>
-							</div>
 																			<div style="grid-area: next; text-align: right">
 								<div>
 									Next &raquo;
 								</div>
 								<div>
-									<a href="/xylem-js-doc/docs/doc/reactivity/">
-										Reactivity									</a>
+									<a href="/xylem-js-doc/docs/doc/installation/">
+										Installation									</a>
 								</div>
 							</div>
 											</nav>

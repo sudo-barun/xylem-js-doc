@@ -1,0 +1,65 @@
+<h2>Setup XylemJS project</h2>
+
+<p>The following steps shows how to create new XylemJS project.</p>
+
+<p><strong>1. Download XylemJS project template</strong></p>
+
+<p>To download XylemJS project template, use following command:</p>
+
+<pre data-language="plain">
+npx degit xylem-js/templates/js my-xylem-js-project
+</pre>
+
+<p>Alternatively, to use <strong>Typescript</strong> instead of Javascript, use following command:</p>
+
+<pre data-language="plain">
+npx degit xylem-js/templates/ts my-xylem-js-project
+</pre>
+
+<p>These commands use <a href="https://www.npmjs.com/package/degit" rel="noopener noreferrer" target="_blank">degit</a> to scaffold new XylemJS project from <a href="https://github.com/xylem-js/templates" rel="noopener noreferrer" target="_blank">https://github.com/xylem-js/templates</a> repository.</p>
+
+<p><strong>2. Go to the project directory</strong></p>
+
+<pre data-language="plain">
+cd my-xylem-js-project
+</pre>
+
+<p><strong>3. Install npm dependencies</strong></p>
+
+<pre data-language="plain">
+npm install
+</pre>
+
+<p><strong>4. Start dev server</strong></p>
+
+<pre data-language="plain">
+npm run dev
+</pre>
+
+<p>This starts a server at <a href="https://localhost:5173" rel="noopener noreferrer" target="_blank">https://localhost:5173</a> .</p>
+
+<p>⚠️ Notice: You may see warning in browser saying &quot;invalid certifcate&quot;. Since self-signed certificate is used to enable HTTPS, it is normal for browser to show such warning. You can safely continue by clicking &quot;Accept the Risk and Continue&quot; button.</p>
+
+<p>After you open the link, you will see &quot;Hello World&quot; text in the screen. You can edit the <code>src/App.tsx</code> file and the page reloads after saving any changes.</p>
+
+<p><strong>5. Build for production</strong></p>
+
+<pre data-language="plain">
+npm run build
+</pre>
+
+<p>This generates files inside <code>dist</code> folder.</p>
+
+<p>You can deploy the <code>dist</code> folder to host provider of your choice.</p>
+
+<p><strong>6. Preview production build</strong></p>
+
+<pre data-language="plain">
+npm run preview
+</pre>
+
+<p>This starts a server at <a href="https://localhost:4173" rel="noopener noreferrer" target="_blank">https://localhost:4173</a> .</p>
+
+<p></p>
+
+<p>If you want to add XylemJS to an already existing project or prefer installing packages manually, check the &quot;Installation&quot; page.</p>
